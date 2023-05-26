@@ -11,28 +11,33 @@ import javax.persistence.Transient;
 import org.hibernate.annotations.Entity;
 
 @javax.persistence.Entity
-@Table(name="student")
+@Table(name = "student")
 public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String fist_name;
 	private String last_name;
+	private String email;
 	private LocalDate dob;
 	private String password;
 	@Transient
 	private String confirm_password;
-	
+	private Course course;
+
 	public Student() {
 		// TODO Auto-generated constructor stub
+		System.out.println("in student default pojo constructor");
 	}
-	
-	public Student(String fist_name, String last_name, LocalDate dob, String password) {
+
+	public Student(String fist_name, String last_name, String email, LocalDate dob, String password, Course course) {
 		super();
 		this.fist_name = fist_name;
 		this.last_name = last_name;
+		this.email = email;
 		this.dob = dob;
 		this.password = password;
+		this.course = course;
 	}
 
 	public Integer getId() {
@@ -59,6 +64,14 @@ public class Student {
 		this.last_name = last_name;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public LocalDate getDob() {
 		return dob;
 	}
@@ -83,10 +96,18 @@ public class Student {
 		this.confirm_password = confirm_password;
 	}
 
-	@Override
-	public String toString() {
-		return "Student [id=" + id + ", fist_name=" + fist_name + ", last_name=" + last_name + ", dob=" + dob + "]";
+	public Course getCourse() {
+		return course;
 	}
 
-	
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", fist_name=" + fist_name + ", last_name=" + last_name + ", email=" + email
+				+ ", dob=" + dob + ", course=" + course + "]";
+	}
+
 }
