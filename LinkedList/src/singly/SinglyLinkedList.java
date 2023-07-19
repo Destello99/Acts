@@ -7,63 +7,35 @@ public class SinglyLinkedList {
 	public static int size = 0;
 
 	//Add node to it's appropriate position
-	public void sortedInsert(int data){
-		Node newNode = new Node(data);
-		if(head  ==  null) {
+	public void sortedInsert(int value) {
+		Node newNode = new Node(value);
+
+		if (head == null || head.data >= newNode.data) {
+			newNode.next = head;
 			head = newNode;
-			//adding new node to empty liked list
-		}
-		else{
-			Node trav;
-			Node prev;
-			trav = prev = head;
-			if(head.data > newNode.data){
-
-	public void insert(int data) {
-		Node newNode = new Node(data);
-		if(head ==  null) {
-			head= newNode;
-			++size;
-		}
-		else {
-			Node trav = head;
-			Node prev = trav;
-			
-			if(head.data > newNode.data) {
-
-				newNode.next = head;
-				head = newNode;
+		} else {
+			Node current = head;
+			while (current.next != null && current.next.data < newNode.data) {
+				current = current.next;
 			}
-			else {
-				while (trav.data < newNode.data && trav.next != null){
-					prev=trav;
-					trav = trav.next;
-				}
-				if(trav.next == null) {
-					trav.next = newNode;
-					size++;
-					return;
-				}
-				newNode.next = trav;
-				prev.next = newNode;
-			}
+			newNode.next = current.next;
+			current.next = newNode;
 		}
-		size++;
 	}
-	public void  display() {
+	public void display() {
 		Node current = head;
 		while (current != null) {
-			System.out.print(current.data +"->");
+			System.out.print(current.data + "->");
 			current = current.next;
 		}
 		System.out.println("null");
 	}
 
 	//Remove all occurrence of given data
-	public void removeAll( int data) {
+	public void removeAll(int data) {
 		Node prev = null;
 		Node trav = head;
-		if(head==null)
+		if (head == null)
 			System.out.println("list is empty");
 		while (trav != null) {
 			if (head.data == data) {
@@ -72,8 +44,7 @@ public class SinglyLinkedList {
 			} else if (trav.data == data) {
 				prev.next = trav.next;
 				trav = trav.next;
-			}
-			else {
+			} else {
 				prev = trav;
 				trav = trav.next;
 			}
@@ -81,57 +52,24 @@ public class SinglyLinkedList {
 	}
 
 	//Print reverse using recursion
-=======
-				trav = head.next;
-				while(trav != null) {
-					System.out.println("insode loop");
-					if(prev.data < newNode.data) {
-						newNode.next = trav;
-						prev.next = newNode;
-					}
-					prev = trav;
-					trav = trav.next;
-				}
-			}
-			
-		}
-		size++;
-	}
-	
-	public void  display() {
-		
-		if(head == null) {
-			System.out.println("List is empty");
-		}
-		else {
-			Node trav = head;
-			System.out.println("head data="+head.data);
-			
-			 while(trav != null) {
-				 System.out.print(trav.data+"->"); 
-				 trav =trav.next;
-				 
-			 }
-			System.out.println("null");
-		}
-	}
+
+
 	public void removeAll() {
-		if(head==null)
+		if (head == null)
 			System.out.println("liest is empty");
 		else {
 			head = null;
 		}
 		System.out.println("every node is removed");
 	}
->>>>>>> origin/main
+
 	public void printReverse(Node head) {
-		
-		if(head != null) {
+
+		if (head != null) {
 			printReverse(head.next);
-			System.out.print(head.data+"->");
+			System.out.print(head.data + "->");
 		}
 	}
-<<<<<<< HEAD
 
 	// Wrapper method for reverse
 	public void reverse() {
@@ -139,17 +77,8 @@ public class SinglyLinkedList {
 		System.out.print("head");
 		System.out.println();
 	}
-	
+
 	public int listSize() {
 		return size;
-=======
-	public void reverse() {
-		printReverse(head);
 	}
-	
-	public int listSize() {
-		return size-1;
->>>>>>> origin/main
-	}
-
 }
