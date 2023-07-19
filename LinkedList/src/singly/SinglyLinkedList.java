@@ -5,6 +5,7 @@ import Node.Node;
 public class SinglyLinkedList {
 	Node head;
 	public static int size = 0;
+<<<<<<< HEAD
 
 	//Add node to it's appropriate position
 	public void sortedInsert(int data){
@@ -18,10 +19,24 @@ public class SinglyLinkedList {
 			Node prev;
 			trav = prev = head;
 			if(head.data > newNode.data){
+=======
+	public void insert(int data) {
+		Node newNode = new Node(data);
+		if(head ==  null) {
+			head= newNode;
+			++size;
+		}
+		else {
+			Node trav = head;
+			Node prev = trav;
+			
+			if(head.data > newNode.data) {
+>>>>>>> origin/main
 				newNode.next = head;
 				head = newNode;
 			}
 			else {
+<<<<<<< HEAD
 				while (trav.data < newNode.data && trav.next != null){
 					prev=trav;
 					trav = trav.next;
@@ -68,6 +83,49 @@ public class SinglyLinkedList {
 	}
 
 	//Print reverse using recursion
+=======
+				trav = head.next;
+				while(trav != null) {
+					System.out.println("insode loop");
+					if(prev.data < newNode.data) {
+						newNode.next = trav;
+						prev.next = newNode;
+					}
+					prev = trav;
+					trav = trav.next;
+				}
+			}
+			
+		}
+		size++;
+	}
+	
+	public void  display() {
+		
+		if(head == null) {
+			System.out.println("List is empty");
+		}
+		else {
+			Node trav = head;
+			System.out.println("head data="+head.data);
+			
+			 while(trav != null) {
+				 System.out.print(trav.data+"->"); 
+				 trav =trav.next;
+				 
+			 }
+			System.out.println("null");
+		}
+	}
+	public void removeAll() {
+		if(head==null)
+			System.out.println("liest is empty");
+		else {
+			head = null;
+		}
+		System.out.println("every node is removed");
+	}
+>>>>>>> origin/main
 	public void printReverse(Node head) {
 		
 		if(head != null) {
@@ -75,6 +133,7 @@ public class SinglyLinkedList {
 			System.out.print(head.data+"->");
 		}
 	}
+<<<<<<< HEAD
 
 	// Wrapper method for reverse
 	public void reverse() {
@@ -85,6 +144,14 @@ public class SinglyLinkedList {
 	
 	public int listSize() {
 		return size;
+=======
+	public void reverse() {
+		printReverse(head);
+	}
+	
+	public int listSize() {
+		return size-1;
+>>>>>>> origin/main
 	}
 
 }
