@@ -7,20 +7,35 @@ public class SinglyLinkedList {
 	public static int size = 0;
 
 	//Add node to it's appropriate position
-	public void sortedInsert(int value) {
-		Node newNode = new Node(value);
-
-		if (head == null || head.data >= newNode.data) {
-			newNode.next = head;
+	public void sortedInsert(int data){
+		Node newNode = new Node(data);
+		if(head  ==  null) {
 			head = newNode;
-		} else {
-			Node current = head;
-			while (current.next != null && current.next.data < newNode.data) {
-				current = current.next;
-			}
-			newNode.next = current.next;
-			current.next = newNode;
+			//adding new node to empty liked list
 		}
+		else{
+			Node trav;
+			Node prev;
+			trav = prev = head;
+			if(head.data > newNode.data){
+				newNode.next = head;
+				head = newNode;
+			}
+			else {
+				while (trav.data < newNode.data && trav.next != null){
+					prev=trav;
+					trav = trav.next;
+				}
+				if(trav.next == null) {
+					trav.next = newNode;
+					size++;
+					return;
+				}
+				newNode.next = trav;
+				prev.next = newNode;
+			}
+		}
+		size++;
 	}
 	public void display() {
 		Node current = head;
