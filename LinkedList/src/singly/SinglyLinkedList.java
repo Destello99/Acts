@@ -5,42 +5,12 @@ import Node.Node;
 public class SinglyLinkedList {
 	Node head;
 	public static int size = 0;
-//	public void insert(int data) {
-//		Node newNode = new Node(data);
-//		if(head ==  null) {
-//			head= newNode;
-//			++size;
-//		}
-//		else {
-//			Node trav = head;
-//			Node prev = trav;
-//
-//			if(head.data > newNode.data) {
-//				newNode.next = head;
-//				head = newNode;
-//			}
-//			else {
-//				trav = head.next;
-//				while(trav != null) {
-//					if(prev.data < newNode.data) {
-//						newNode.next = trav;
-//						prev.next = newNode;
-//					}
-//					prev = trav;
-//					trav = trav.next;
-//				}
-//			}
-//
-//		}
-//		size++;
-//	}
 
-//TODO add node to linked in sorted order
+	//Add node to it's appropriate position
 	public void sortedInsert(int data){
 		Node newNode = new Node(data);
 		if(head  ==  null) {
 			head = newNode;
-			size++;
 			//adding new node to empty liked list
 		}
 		else{
@@ -75,6 +45,8 @@ public class SinglyLinkedList {
 		}
 		System.out.println("null");
 	}
+
+	//Remove all occurrence of given data
 	public void removeAll( int data) {
 		Node prev = null;
 		Node trav = head;
@@ -94,6 +66,8 @@ public class SinglyLinkedList {
 			}
 		}
 	}
+
+	//Print reverse using recursion
 	public void printReverse(Node head) {
 		
 		if(head != null) {
@@ -101,6 +75,8 @@ public class SinglyLinkedList {
 			System.out.print(head.data+"->");
 		}
 	}
+
+	// Wrapper method for reverse
 	public void reverse() {
 		printReverse(head);
 		System.out.print("head");
@@ -108,7 +84,7 @@ public class SinglyLinkedList {
 	}
 	
 	public int listSize() {
-		return size-1;
+		return size;
 	}
 
 }
